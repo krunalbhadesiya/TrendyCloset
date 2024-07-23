@@ -237,7 +237,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/user-avtar.png" alt="user"/>
+                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/user-avtar.png" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">John Doe</h4>
@@ -252,8 +252,8 @@ export default function Home() {
                   <Star />
                 </div>
                 <p className="text-muted-foreground">
-                  "I'm absolutely thrilled with the products I've purchased from Acme Ecommerce.\n The quality is
-                  outstanding, and the customer service is top-notch. Highly\n recommended!"
+                  &quot;I&apos;m absolutely thrilled with the products I&apos;ve purchased from Acme Ecommerce.&quot; <br />
+                  &quot;The quality is outstanding, and the customer service is top-notch. Highly recommended!&quot;
                 </p>
               </div>
             </div>
@@ -276,8 +276,8 @@ export default function Home() {
                   <Star fill="text-secondary" />
                 </div>
                 <p className="text-muted-foreground">
-                  "I'm absolutely thrilled with the products I've purchased from Acme Ecommerce.\n The quality is
-                  outstanding, and the customer service is top-notch. Highly\n recommended!"
+                  &quot;I&apos;m absolutely thrilled with the products I&apos;ve purchased from Acme Ecommerce.&quot; <br />
+                  &quot;The quality is outstanding, and the customer service is top-notch. Highly recommended!&quot;
                 </p>
               </div>
             </div>
@@ -292,7 +292,7 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm">Satisfied Customer</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1 ">
+                <div className="flex items-center gap-1">
                   <Star fill="text-secondary" />
                   <Star fill="text-secondary" />
                   <Star fill="text-secondary" />
@@ -300,11 +300,12 @@ export default function Home() {
                   <Star />
                 </div>
                 <p className="text-muted-foreground">
-                  "I'm absolutely thrilled with the products I've purchased from Acme Ecommerce.\n The quality is
-                  outstanding, and the customer service is top-notch. Highly\n recommended!"
+                  &quot;I&apos;m absolutely thrilled with the products I&apos;ve purchased from Acme Ecommerce.&quot; <br />
+                  &quot;The quality is outstanding, and the customer service is top-notch. Highly recommended!&quot;
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
