@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ role }) => {
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
-                                            <img
+                                            <Image
                                                 src="/user-avtar.png"
                                                 width={36}
                                                 height={36}

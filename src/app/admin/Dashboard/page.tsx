@@ -77,13 +77,7 @@ export default function AdminDashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <img
-                        src="/placeholder.svg"
-                        width={48}
-                        height={48}
-                        alt="Product Image"
-                        className="rounded-md"
-                      />
+                      <Image src="/placeholder.svg" width={48} height={48} alt="Product Image" />
                       <div>
                         <div className="font-medium">Classic Tee</div>
                         <div className="text-sm text-muted-foreground">Black, M</div>
@@ -96,7 +90,7 @@ export default function AdminDashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width={48}
                         height={48}
@@ -115,7 +109,7 @@ export default function AdminDashboard() {
                 <TableRow>
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
                         src="/placeholder.svg"
                         width={48}
                         height={48}

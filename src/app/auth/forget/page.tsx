@@ -7,7 +7,7 @@ const ForgetPassword: React.FC = () => {
   return (
     <div className="grid w-full min-h-screen lg:grid-cols-2">
       <div className="hidden bg-muted lg:block">
-        <img
+        <Image
           src="/authpage.jpg"
           alt="Login Image"
           width="1600"

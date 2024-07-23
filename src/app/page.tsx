@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex-1">
       <section className="relative h-[70vh] md:h-[90vh] overflow-hidden">
-        <img
+        <Image
           src="/hero-bg.jpeg"
           alt="Hero Image"
           width="1920"
@@ -28,7 +28,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6">Featured Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div className="rounded-lg border bg-card text-card-foreground shadow-sm h-full" data-v0-t="card">
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="400"
@@ -47,7 +47,7 @@ export default function Home() {
               </div>
             </div>
             <div className="rounded-lg border bg-card text-card-foreground shadow-sm h-full" data-v0-t="card">
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="400"
@@ -68,7 +68,7 @@ export default function Home() {
               </div>
             </div>
             <div className="rounded-lg border bg-card text-card-foreground shadow-sm h-full" data-v0-t="card">
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="400"
@@ -90,7 +90,7 @@ export default function Home() {
               </div>
             </div>
             <div className="rounded-lg border bg-card text-card-foreground shadow-sm h-full" data-v0-t="card">
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="400"
@@ -121,7 +121,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -139,7 +139,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -157,7 +157,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -175,7 +175,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -192,7 +192,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -209,7 +209,7 @@ export default function Home() {
               <a className="absolute inset-0 z-10" href="#">
                 <span className="sr-only">View Product</span>
               </a>
-              <img
+              <Image
                 src="/product/tshirt-1.png"
                 alt="Product Image"
                 width="600"
@@ -234,7 +234,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <img className="aspect-square h-full w-full" src="/user-avtar.png" />
+                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user"/>
                   </span>
                   <div>
                     <h4 className="font-semibold">John Doe</h4>
@@ -258,7 +258,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <img className="aspect-square h-full w-full" src="/user-avtar.png" />
+                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">Jane Smith</h4>
@@ -282,7 +282,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <img className="aspect-square h-full w-full" src="/user-avtar.png" />
+                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">Michael Johnson</h4>
