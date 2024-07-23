@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 const Home = () => {
   return (
     <main className="flex-1">
@@ -231,7 +234,7 @@ const Home = () => {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/placeholder-user.jpg" />
+                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/placeholder-user.jpg" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">John Doe</h4>
@@ -320,7 +323,7 @@ const Home = () => {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/placeholder-user.jpg" />
+                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/placeholder-user.jpg" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">Jane Smith</h4>
@@ -409,7 +412,7 @@ const Home = () => {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/placeholder-user.jpg" />
+                    <Image className="aspect-square h-full w-full" src="/placeholder-user.jpg" alt="user"/>
                   </span>
                   <div>
                     <h4 className="font-semibold">Michael Johnson</h4>

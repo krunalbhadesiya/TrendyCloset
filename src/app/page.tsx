@@ -1,3 +1,7 @@
+"use clinet";
+
+
+import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
 
@@ -162,13 +166,12 @@ export default function Home() {
                 alt="Product Image"
                 width="600"
                 height="600"
-
                 className="aspect-square object-cover rounded-lg group-hover:opacity-50 transition-opacity"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
+                <Button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
                   View Product
-                </button>
+                </Button>
               </div>
             </div>
             <div className="relative group">
@@ -234,7 +237,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user"/>
+                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/user-avtar.png" alt="user"/>
                   </span>
                   <div>
                     <h4 className="font-semibold">John Doe</h4>
@@ -258,7 +261,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user" />
+                    <Image className="aspect-square h-full w-full" width="24" height="24" src="/user-avtar.png" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">Jane Smith</h4>
@@ -282,7 +285,7 @@ export default function Home() {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" alt="user" />
+                    <Image className="aspect-square h-full w-full" src="/user-avtar.png" width="24" height="24" alt="user" />
                   </span>
                   <div>
                     <h4 className="font-semibold">Michael Johnson</h4>
