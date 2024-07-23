@@ -245,10 +245,10 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
                   <Star />
                 </div>
                 <p className="text-muted-foreground">
@@ -269,11 +269,11 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
                 </div>
                 <p className="text-muted-foreground">
                   "I'm absolutely thrilled with the products I've purchased from Acme Ecommerce.\n The quality is
@@ -292,11 +292,11 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm">Satisfied Customer</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
-                  <Star fill="" />
+                <div className="flex items-center gap-1 ">
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
+                  <Star fill="text-secondary" />
                   <Star />
                 </div>
                 <p className="text-muted-foreground">
