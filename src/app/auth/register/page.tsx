@@ -1,4 +1,5 @@
 // src/app/auth/register/page.tsx
+import Image from "next/image";
 
 import { RegisterForm } from '@/components/auth/RegisterFrom';
 import React from 'react';

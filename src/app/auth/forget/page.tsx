@@ -1,5 +1,5 @@
 // src/app/auth/forget/page.tsx
-
+import Image from "next/image";
 import { ForgetPasswordForm } from '@/components/auth/ForgetPasswordFrom';
 import React from 'react';
 

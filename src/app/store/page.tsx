@@ -1,13 +1,22 @@
 "use client"
+import Image from "next/image";
+import { useState, useMemo } from "react";
+import Link from "next/link";
+import { Button } from "../../components/ui/button";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../components/ui/accordion";
+import { Label } from "../../components/ui/label";
+import { Checkbox } from "../../components/ui/checkbox";
+import { SearchNormal } from "iconsax-react";
+import { Input } from "@/components/ui/input";
+import { ShirtIcon } from "lucide-react";
 
-import { useState, useMemo } from "react"
-import Link from "next/link"
-import { Button } from "../../components/ui/button"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../components/ui/accordion"
-import { Label } from "../../components/ui/label"
-import { Checkbox } from "../../components/ui/checkbox"
-import { SearchNormal, ShoppingCart } from "iconsax-react"
-import { Input } from "@/components/ui/input"
+
+type Filters = {
+  category: string[];
+  size: string[];
+  color: string[];
+  priceRange: [number, number];
+};
 
 export default function Store() {
   const products = [
@@ -71,59 +80,63 @@ export default function Store() {
       size: "M",
       color: "gray",
     },
-  ]
-  const [selectedFilters, setSelectedFilters] = useState({
+  ];
+
+  const [selectedFilters, setSelectedFilters] = useState<Filters>({
     category: [],
     size: [],
     color: [],
     priceRange: [0, 100],
-  })
-  const handleFilterChange = (type: any, value) => {
+  });
+
+  const handleFilterChange = (type: string, value: string | string[] | [number, number]) => {
     if (type === "category") {
       setSelectedFilters({
         ...selectedFilters,
-        category: selectedFilters.category.includes(value)
-          ? selectedFilters.category.filter((item) => item !== value)
-          : [...selectedFilters.category, value],
-      })
+        category: (value as string[]).includes(value as string)
+          ? selectedFilters.category.filter((item) => item !== (value as string))
+          : [...selectedFilters.category, value as string],
+      });
     } else if (type === "size") {
       setSelectedFilters({
         ...selectedFilters,
-        size: selectedFilters.size.includes(value)
-          ? selectedFilters.size.filter((item) => item !== value)
-          : [...selectedFilters.size, value],
-      })
+        size: (value as string[]).includes(value as string)
+          ? selectedFilters.size.filter((item) => item !== (value as string))
+          : [...selectedFilters.size, value as string],
+      });
     } else if (type === "color") {
       setSelectedFilters({
         ...selectedFilters,
-        color: selectedFilters.color.includes(value)
-          ? selectedFilters.color.filter((item) => item !== value)
-          : [...selectedFilters.color, value],
-      })
+        color: (value as string[]).includes(value as string)
+          ? selectedFilters.color.filter((item) => item !== (value as string))
+          : [...selectedFilters.color, value as string],
+      });
     } else if (type === "priceRange") {
       setSelectedFilters({
         ...selectedFilters,
-        priceRange: value,
-      })
+        priceRange: value as [number, number],
+      });
     }
-  }
+  };
+
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (selectedFilters.category.length > 0 && !selectedFilters.category.includes(product.category)) {
-        return false
+        return false;
       }
       if (selectedFilters.size.length > 0 && !selectedFilters.size.includes(product.size)) {
-        return false
+        return false;
       }
       if (selectedFilters.color.length > 0 && !selectedFilters.color.includes(product.color)) {
-        return false
+        return false;
       }
       if (product.price < selectedFilters.priceRange[0] || product.price > selectedFilters.priceRange[1]) {
-        return false
+        return false;
       }
-      return true
-    })
-  }, [selectedFilters])
+      return true;
+    });
+  }, [selectedFilters]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-primary text-primary-foreground py-4 px-6">
@@ -137,7 +150,6 @@ export default function Store() {
             <Button variant="secondary">
               <SearchNormal variant="Bulk" />
             </Button>
-
           </div>
         </div>
       </header>
@@ -245,88 +257,5 @@ export default function Store() {
         </div>
       </div>
     </div>
-  )
-}
-
-function SearchIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  )
-}
-
-
-function ShirtIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
-    </svg>
-  )
-}
-
-
-function ShoppingCartIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="8" cy="21" r="1" />
-      <circle cx="19" cy="21" r="1" />
-      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-    </svg>
-  )
-}
-
-
-function XIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
   )
 }

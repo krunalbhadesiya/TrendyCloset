@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import { Book, Command, Element3, Setting, Shop, TableDocument, User } from "iconsax-react"
+import Image from "next/image";
 
 
 function AdminSidebar() {
@@ -15,7 +16,7 @@ function AdminSidebar() {
                         className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
                         prefetch={false}
                     >
-                        <Image src="/Logo-White.png" className="h-7 w-7" alt="" />
+                        <Image src="/Logo-White.png" width="28" height="28" className="h-7 w-7" alt="logo"  />
                         <span className="sr-only">T-Shirt Emporium</span>
                     </Link>
                     <Tooltip>
