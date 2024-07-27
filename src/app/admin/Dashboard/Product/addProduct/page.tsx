@@ -33,14 +33,17 @@ export default function AddProduct() {
     if (!image) return null;
 
     const filename = `${Date.now()}-${image.name}`;
-    const formData = new FormData();
-    formData.append('file', image);
+    const url = `${process.env.BASE_URL}/upload?filename=${encodeURIComponent(filename)}`;
 
     try {
-      const response = await fetch(`${process.env.BASE_URL}/upload?filename=${encodeURIComponent(filename)}`, {
+      const response = await fetch(url, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+        },
+        body: await image.arrayBuffer(), // Convert the file to ArrayBuffer
       });
+
       const result = await response.json();
       if (result.success) {
         return result.url;
@@ -58,7 +61,11 @@ export default function AddProduct() {
     e.preventDefault();
 
     const uploadedImageUrl = await handleImageUpload();
-    setFormData(prev => ({ ...prev, imageUrl: uploadedImageUrl }));
+
+    const finalFormData = {
+      ...formData,
+      imageUrl: uploadedImageUrl,
+    };
 
     try {
       const response = await fetch(`${process.env.BASE_URL}/products`, {
@@ -66,7 +73,7 @@ export default function AddProduct() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(finalFormData),
       });
       const result = await response.json();
       if (result.success) {
@@ -187,6 +194,7 @@ export default function AddProduct() {
             <Label htmlFor="image">Photo</Label>
             <Input
               id="image"
+              name="image"
               type="file"
               onChange={(e) => e.target.files && setImage(e.target.files[0])}
             />
