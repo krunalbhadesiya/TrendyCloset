@@ -12,7 +12,7 @@ const generateUniqueFilename = (originalFilename: string): string => {
   const now = new Date();
   const timestamp = now.toLocaleTimeString('en-GB', { hour12: false }).replace(/:/g, '-');
   const date = now.toLocaleDateString('en-GB').replace(/\//g, '-');
-  const uniqueString = `${timestamp}-${date}`;
+  const uniqueString = `${timestamp}-${date}-${uuidv4()}`;
   const fileExtension = originalFilename.split('.').pop();
   return `${uniqueString}.${fileExtension}`;
 };
@@ -24,8 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const chunks: Uint8Array[] = [];
-    const filename = req.query.filename as string;
-    const uniqueFilename = generateUniqueFilename(filename);
+    let originalFilename: string | null = null;
 
     req.on('data', chunk => {
       chunks.push(chunk);
@@ -33,6 +32,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     req.on('end', async () => {
       const fileBuffer = Buffer.concat(chunks);
+      const contentType = req.headers['content-type'] || '';
+      const filenameMatch = contentType.match(/filename="(.+)"/);
+      if (filenameMatch) {
+        originalFilename = filenameMatch[1];
+      } else {
+        return res.status(400).json({ success: false, message: 'Filename not provided' });
+      }
+
+      if (!originalFilename) {
+        return res.status(400).json({ success: false, message: 'Filename is required' });
+      }
+
+      const uniqueFilename = generateUniqueFilename(originalFilename);
 
       // Upload file to Vercel Blob Storage
       const blob = await put(uniqueFilename, fileBuffer, { access: 'public' });
