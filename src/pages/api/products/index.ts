@@ -1,24 +1,38 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import mongoose from 'mongoose';
+// import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import dbConnect from '../../../lib/dbConnect';
+// import Product from '../../../lib/models/Product';
 import Product, { IProduct } from '@/models/Product';
 
-// Connect to MongoDB
-const connectDb = async () => {
-  if (mongoose.connection.readyState >= 1) return;
+dbConnect();
 
-  return mongoose.connect(process.env.MONGODB_URI as string);
-};
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { method } = req;
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  await connectDb();
-
-  if (req.method === 'POST') {
-    return createProduct(req, res);
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+  switch (method) {
+    case 'GET':
+      try {
+        const products = await Product.find({});
+        res.status(200).json({ success: true, data: products });
+        return createProduct(req, res);
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+    case 'POST':
+      try {
+        const product = await Product.create(req.body);
+        res.status(201).json({ success: true, data: product });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+      default:
+      res.setHeader('Allow', ['GET', 'POST']);
+      res.status(405).end(`Method ${method} Not Allowed`);
+      break;
   }
-};
+}
 
 const createProduct = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -69,4 +83,3 @@ const createProduct = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default handler;
