@@ -1,27 +1,42 @@
 import { put } from '@vercel/blob';
-import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { v4 as uuidv4 } from 'uuid';
 
-// Handler for the POST request
-export async function POST(request: Request): Promise<NextResponse> {
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Extract filename from query parameters
-    const { searchParams } = new URL(request.url);
-    const filename = searchParams.get('filename');
-
-    if (!filename) {
-      return NextResponse.json({ success: false, message: 'Filename is required' }, { status: 400 });
+    if (req.method !== 'POST') {
+      return res.status(405).json({ success: false, message: 'Method Not Allowed' });
     }
 
-    // Check if the request body is a FormData or ReadableStream
-    const body = request.body instanceof ReadableStream ? request.body : await request.text();
+    const chunks: Uint8Array[] = [];
+    const filename = `${uuidv4()}-${req.query.filename}`;
 
-    // Upload file to Vercel Blob Storage
-    const blob = await put(filename, body, { access: 'public' });
+    req.on('data', chunk => {
+      chunks.push(chunk);
+    });
 
-    // Return the uploaded file URL
-    return NextResponse.json({ success: true, url: blob.url });
+    req.on('end', async () => {
+      const fileBuffer = Buffer.concat(chunks);
+
+      // Upload file to Vercel Blob Storage
+      const blob = await put(filename, fileBuffer, { access: 'public' });
+
+      // Return the uploaded file URL
+      res.status(200).json({ success: true, url: blob.url });
+    });
+
+    req.on('error', error => {
+      console.error('Error uploading file:', error);
+      res.status(500).json({ success: false, message: 'Error uploading file' });
+    });
   } catch (error) {
     console.error('Error uploading file:', error);
-    return NextResponse.json({ success: false, message: 'Error uploading file' }, { status: 500 });
+    res.status(500).json({ success: false, message: 'Error uploading file' });
   }
 }
