@@ -68,7 +68,7 @@ export default function AddProduct() {
     };
 
     try {
-      const response = await fetch(`${process.env.BASE_URL}/products`, {
+      const response = await fetch(`${process.env.BASE_URL}products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
