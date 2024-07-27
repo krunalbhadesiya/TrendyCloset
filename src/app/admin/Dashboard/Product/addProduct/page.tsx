@@ -33,7 +33,7 @@ export default function AddProduct() {
     if (!image) return null;
 
     const filename = `${Date.now()}-${image.name}`;
-    const url = `${process.env.BASE_URL}/upload?filename=${encodeURIComponent(filename)}`;
+    const url = `${process.env.BASE_URL}upload?filename=${filename}`;
 
     try {
       const response = await fetch(url, {
