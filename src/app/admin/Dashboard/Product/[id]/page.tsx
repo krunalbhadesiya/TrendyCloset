@@ -8,8 +8,8 @@ export default function AddProduct() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Add New Product</h1>
-        <p className="text-muted-foreground">Fill out the form below to add a new product to your store.</p>
+        <h1 className="text-3xl font-bold">Update Product</h1>
+        <p className="text-muted-foreground">Fill out the form below to add a Update product to your store.</p>
       </div>
       <form className="grid gap-6">
         <div className="grid gap-2">
